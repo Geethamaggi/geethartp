@@ -1,0 +1,19 @@
+<?php
+
+
+	include 'conn.php';
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$password =$_POST['password'];
+	$password =password_hash($password, PASSWORD_BCRYPT);
+
+	
+	$query="INSERT INTO `register`(`name`,`email`, `password`) VALUES ('$name','$email','$password')";
+	$result=mysqli_query($con,$query);
+	if ($result) {
+		header("location:test.html");
+	}
+	else{
+		echo "Error";
+	}
+?>
